@@ -57,7 +57,7 @@ class BritiveCli:
                 'expiration_jmespath': 'expirationTime'
             }
         }
-        self.browser = None
+        self.browser = os.getenv('PYBRITIVE_BROWSER')
 
     def set_output_format(self, output_format: str):
         self.output_format = self.config.get_output_format(output_format)
@@ -103,7 +103,7 @@ class BritiveCli:
         except Exception:
             return None
 
-    def login(self, explicit: bool = False, browser: str = None):
+    def login(self, explicit: bool = False, browser: str = os.getenv('PYBRITIVE_BROWSER')):
         # explicit means the user called pybritive login, otherwise it is being implicitly called by something else
 
         self.browser = browser

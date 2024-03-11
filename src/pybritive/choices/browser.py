@@ -1,3 +1,4 @@
+import os
 import click
 
 # eval example: eval $(pybritive checkout test -m env)
@@ -10,7 +11,8 @@ browser_choices = click.Choice(
         'macosx',
         'safari',
         'chrome',
-        'chromium'
+        'chromium',
+        os.getenv('PYBRITIVE_BROWSER')
     ],
     case_sensitive=False
 )
